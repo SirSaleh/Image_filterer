@@ -1,4 +1,4 @@
-GIMP.make_gray()GIMP.make_gray()class image_filterer (object):
+class image_filterer (object):
 	import os,sys
 	import Image
 	rgb_im = Image.new("RGB",[0,0])
