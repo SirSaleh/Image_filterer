@@ -13,3 +13,5 @@ The code below make file "a.jpg" black with and also makes it blur (normal blur 
 >Editor.make_normal_blur()
 
 >Editor.show()
+
+*hope you enjoy* :)
