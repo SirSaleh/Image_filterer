@@ -4,9 +4,9 @@ This repository is an simple code to set filters to images.
 My base is image_filterer.py class that I define my main filters there :)
 
 #How to use:
-To use the class you just need to initial it with an input and an output! then use the methods:
+To use the class you just need to initial it with an input! then use the methods:
 The code below make file "a.jpg" black with and also makes it blur (normal blur not gausian) and  and show it in Xwindow. 
->Editor = image_filterer('a.jpg','o.jpg') 
+>Editor = image_filterer('a.jpg') 
 
 >Editor.make_gray()
 
