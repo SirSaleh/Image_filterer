@@ -63,6 +63,7 @@ class image_filterer (object):
 
 
 if (__name__=="__main__"):
+	# I put just a simple example :) USE the class better than me please :)
 	out = raw_input("obtain address to save the output!")
 	GIMP = image_filterer('a.jpg')
 	GIMP.make_gray()
