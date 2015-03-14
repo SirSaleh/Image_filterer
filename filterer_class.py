@@ -46,9 +46,7 @@ class image_filterer (object):
 		for i in range(0,self.rgb_im.size[0]):
 		   for j in range(0,self.rgb_im.size[1]):
 		      self.rgb_im.putpixel((i,j), (255-self.rgb_im.getpixel((i, j))[0],255-self.rgb_im.getpixel((i, j))[1],255-self.rgb_im.getpixel((i, j))[2]))
-		self.rgb_im.save("out.jpg", "JPEG", quality=80, optimize=True, progressive=True)
-		
-		#rgb_im.save(out, "JPEG", quality=80, optimize=True, progressive=True)
+
 	##
 	#Method(s) to show current image in X-Window system.
 	##
