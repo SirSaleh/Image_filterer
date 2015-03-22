@@ -23,20 +23,32 @@ class image_filterer (object):
 	##
 	# Method(s) to set Normal Blur to image
 	##
-	def make_normal_blur(self):
+
+	def make_normal_blur(self,level=1):
 		mat=[]
 		for i in range(0,self.rgb_im.size[0]):
 		   mat.append([])
 		   for j in range(0,self.rgb_im.size[1]):
 		      mat[i].append(self.rgb_im.getpixel((i, j)))
-                
-		# RGB matrix Obtained! For Example if you want i,j'th pixles red channel it's enough for you: mat[i][j][0] // 0 for red! 1 for green 2 for blue
+	
+		# RGB matrix Obtained! For Example if you want i,j'th pixles red channel it's enough for you: mat[i][j][0] // 0 for red! 1 for green 2 for blue TODO: Continue here
 		for i in range(0,self.rgb_im.size[0]-1):
-		   for j in range(0,self.rgb_im.size[1]-1): #TODO: make shorter below code with to nested for loop :)
-		      r=(mat[i-1][j-1][0]+mat[i][j-1][0]+mat[i+1][j-1][0]+mat[i+1][j][0]+mat[i+1][j+1][0]+mat[i][j+1][0]+mat[i-1][j+1][0]+mat[i-1][j][0])/8
-		      g=(mat[i-1][j-1][1]+mat[i][j-1][1]+mat[i+1][j-1][1]+mat[i+1][j][1]+mat[i+1][j+1][1]+mat[i][j+1][1]+mat[i-1][j+1][1]+mat[i-1][j][1])/8
-		      b=(mat[i-1][j-1][2]+mat[i][j-1][2]+mat[i+1][j-1][2]+mat[i+1][j][2]+mat[i+1][j+1][2]+mat[i][j+1][2]+mat[i-1][j+1][2]+mat[i-1][j][2])/8
-		      self.rgb_im.putpixel((i,j),(r,g,b))
+			for j in range(0,self.rgb_im.size[1]-1):
+                                r=0
+                                g=0
+                                b=0
+				for k in range(-1*level,level+1):
+					for h in range (-1*level,level+1):
+                                                if (i+k < self.rgb_im.size[0]-1 and j+h < self.rgb_im.size[1]-1 and i+k>=0 and j+h>=0):
+							#print i,j,"---",i+k,j+h,"--",h+level,k+level
+                                                        r=r+(mat[i+k][j+h][0])*(1/float((2*level+1)*(2*level+1)))
+                                                        g=g+(mat[i+k][j+h][1])*(1/float((2*level+1)*(2*level+1)))
+                                                        b=b+(mat[i+k][j+h][2])*(1/float((2*level+1)*(2*level+1)))
+							#print level,(1/float((2*level+1)*(2*level+1)))
+                                                else:
+                                                        break;
+                                self.rgb_im.putpixel((i,j),(r.__int__(),g.__int__(),b.__int__()))
+
 
 	##
 	# Method(s) to set Smooth (normal, Gausian) Blur to image
@@ -115,12 +127,9 @@ class image_filterer (object):
 	# To caclulate Density of 2 independence Normal Random variable.
 	##
 	def guassian_function(self,x , y,sigma):
-		import numpy as n
-		return n.exp(-(n.power(x,2)+n.power(y,2))/(2*n.power(sigma,2)))/(2*n.power(sigma,2)*n.pi)
+		return n.exp(-(x*x+y*y)/(2*sigma*sigma))/(2*sigma*sigma*n.pi)
 
 
 if (__name__=="__main__"):
-	GIMP = image_filterer('a.jpg')
-        #GIMP.make_gaussian_blur(1)
-	GIMP.show()	
+	print "Use the class easily"	
 
