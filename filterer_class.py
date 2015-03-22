@@ -57,7 +57,8 @@ class image_filterer (object):
                                 b=0
 				for k in range(-1*level,level+1):
 					for h in range (-1*level,level+1):
-                                                if (i+k <= self.rgb_im.size[0]-1 and j+h <= self.rgb_im.size[0]-1):
+                                                if (i+k < self.rgb_im.size[0]-1 and j+h < self.rgb_im.size[1]-1 and i+k>=0 and j+h>=0):
+							#print i,j,"---",i+k,j+h,"--",h+level,k+level
                                                         r=r+(mat[i+k][j+h][0]*weight[k+level][h+level])
                                                         g=g+(mat[i+k][j+h][1]*weight[k+level][h+level])
                                                         b=b+(mat[i+k][j+h][2]*weight[k+level][h+level])
@@ -120,6 +121,6 @@ class image_filterer (object):
 
 if (__name__=="__main__"):
 	GIMP = image_filterer('a.jpg')
-        GIMP.make_gaussian_blur(2)
+        #GIMP.make_gaussian_blur(1)
 	GIMP.show()	
 
