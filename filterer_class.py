@@ -54,6 +54,7 @@ class image_filterer (object):
 	# Method(s) to set Smooth (normal, Gausian) Blur to image
 	##
 	def make_gaussian_blur(self,level=1):
+		# Must Use another method via KERNEL FUNCTIONS.
 		weight=self.gaussian_weight_matrix(radius=level, sigma = 1.5)
 		mat=[]
 		for i in range(0,self.rgb_im.size[0]):
