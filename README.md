@@ -15,3 +15,5 @@ The code below make file "a.jpg" black with and also makes it blur (normal blur 
 >Editor.show()
 
 *hope you enjoy* :)
+
+**ToDo:* Faster Gaussian Blur and New filters comming soon! :)*
