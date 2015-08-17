@@ -75,9 +75,12 @@ class image_filterer (object):
                                                         r=r+(mat[i+k][j+h][0]*weight[k+level][h+level])
                                                         g=g+(mat[i+k][j+h][1]*weight[k+level][h+level])
                                                         b=b+(mat[i+k][j+h][2]*weight[k+level][h+level])
+							
                                                 else:
+							
                                                         continue;
                                 self.rgb_im.putpixel((i,j),(r.__int__(),g.__int__(),b.__int__()))
+		
 
 	##
 	# Method(s) to make image Negative
@@ -128,9 +131,10 @@ class image_filterer (object):
 	# To caclulate Density of 2 independence Normal Random variable.
 	##
 	def guassian_function(self,x , y,sigma):
+		import numpy as n
 		return n.exp(-(x*x+y*y)/(2*sigma*sigma))/(2*sigma*sigma*n.pi)
 
 
 if (__name__=="__main__"):
-	print "Use the class easily"	
+	print "Use the class easily"
 
