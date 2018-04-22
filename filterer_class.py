@@ -1,6 +1,6 @@
 class image_filterer (object):
 	import os,sys
-	import Image
+	from PIL import Image
 	rgb_im = Image.new("RGB",[0,0])
 	image_location = ""
 	
