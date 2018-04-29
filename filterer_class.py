@@ -1,5 +1,6 @@
 class image_filterer (object):
 	import os,sys
+	import numpy
 	from PIL import Image
 	rgb_im = Image.new("RGB",[0,0])
 	image_location = ""
@@ -87,10 +88,10 @@ class image_filterer (object):
 	##
 	
 	def make_negative(self):
-		r, g, b = self.rgb_im.getpixel((1, 1))
-		for i in range(0,self.rgb_im.size[0]):
-		   for j in range(0,self.rgb_im.size[1]):
-		      self.rgb_im.putpixel((i,j), (255-self.rgb_im.getpixel((i, j))[0],255-self.rgb_im.getpixel((i, j))[1],255-self.rgb_im.getpixel((i, j))[2]))
+		ImageMatrix = self.numpy.asarray(self.rgb_im)
+		NegativeImageNumber = 255 - ImageMatrix
+		NegativeImageInstance = self.Image.fromarray(NegativeImageNumber,'RGB')
+		self.rgb_im = NegativeImageInstance
 		
 
 	##
@@ -137,4 +138,6 @@ class image_filterer (object):
 
 if (__name__=="__main__"):
 	print "Use the class easily"
-
+	a = image_filterer("./test/a.jpg")
+	a.make_negative()
+	a.show()
