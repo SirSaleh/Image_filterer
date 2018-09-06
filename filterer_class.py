@@ -52,5 +52,5 @@ class image_filterer (object):
 
 if __name__=='__main__':
 	# EXAMPLE USAGE:
-	#image = image_filterer('/home/saleh/Pictures/index.jpeg')
+	image = image_filterer('./test/a.jpg')
 	#image.make_gray().make_normal_blur().show()
